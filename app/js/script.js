@@ -1,9 +1,7 @@
 
 const menu_btn = document.querySelector('.menu');
-console.log(menu_btn)
 const navigation = document.querySelector('.primary-navigation');
 const li = document.querySelector('.primary-navigation').children;
-// const buttons = document.querySelector('.destination-buttons').children;
 
 menu_btn.addEventListener('click', () => {
     navigation.dataset.visible == 'false' ? navigation.setAttribute('data-visible', true) : navigation.setAttribute('data-visible', false)
@@ -23,43 +21,29 @@ menu_btn.addEventListener('click', () => {
 
 
 })
-
+//Tablist
 const tablist = document.querySelector("[role=tablist]")
 const tabs = tablist.querySelectorAll("[role=tab");
-console.log(tabs);
 const btns = Array.from(tabs);
-console.log(btns);
-
-
-
-
 
 const fetchData = async () => {
     const response = await fetch('../../data.json')
     const data = await response.json();
-    console.log(data);
 
     const role = tablist.getAttribute("aria-label");
-    console.log(role);
 
     if (role == "destination-tablist") {
-        console.log("Yes gotcha!!!");
         setDestination(data)
     }
     if (role == "crew-tablist") {
-        console.log("Yes gotcha!!!");
         setCrew(data)
     }
     if (role == "technology-tablist") {
-        console.log("Yes gotcha!!!");
         setTechnology(data)
     }
 }
 fetchData();
 
-// fetchData().then((data) => {
-//     display(data);
-// })
 const setDestination = (data) => {
     const title = document.querySelector('.destination-title')
     const span = document.querySelector('.destination-title > span')
@@ -71,7 +55,6 @@ const setDestination = (data) => {
     btns.forEach((btn) => {
         btn.addEventListener('click', (e) => {
             if (e.target.getAttribute('data-id') == e.target.textContent) {
-                console.log('no data')
                 btns.forEach((allBtn) => {
                     allBtn.setAttribute('aria-selected', false);
                 })
@@ -80,13 +63,10 @@ const setDestination = (data) => {
 
                 destinations.forEach((item, index) => {
                     if (item.name == planetName) {
-                        console.log("Yes")
-                        console.log(item);
                         const { description, distance, images, name, travel } = item;
                         const travels = document.querySelector('.travel');
 
 
-                        // console.log("items-destination"):
                         span.textContent = `0${index + 1}`;
                         image.setAttribute('src', images.png);
 
@@ -112,7 +92,6 @@ const setCrew = ({ crew }) => {
     const crew_image = document.querySelector('.crew-image');
     const crew_role = document.querySelector('.crew-role')
 
-    console.log(crew)
     Array.from(crewbuttons).forEach((btn, index) => {
 
 
@@ -122,7 +101,6 @@ const setCrew = ({ crew }) => {
             })
             btn.setAttribute('aria-selected', 'true')
             const { images: { png }, name, role, bio } = crew[index];
-            console.log(png);
             crew_description.textContent = bio;
             crew_image.setAttribute('src', png);
             crew_name.textContent = name;
@@ -134,19 +112,15 @@ const setCrew = ({ crew }) => {
 const setTechnology = ({ technology }) => {
     const picture_elm = document.querySelector('.technology-image')
     const technology_image = document.createElement('img');
-    console.log(technology_image)
-    window.addEventListener("load", () => {
-        const { images: { portrait, landscape } } = technology[0];
-        if (window.innerWidth < 1120) {
-            technology_image.src = landscape;
+    const { images: { portrait, landscape } } = technology[0];
+    if (window.innerWidth < 1120) {
+        technology_image.src = landscape;
 
 
-        }
-        if (window.innerWidth >= 1120) {
-            technology_image.src = portrait;
-            console.log(technology_image);
-        }
-    })
+    }
+    if (window.innerWidth >= 1120) {
+        technology_image.src = portrait;
+    }
     window.addEventListener("resize", () => {
         const { images: { portrait, landscape } } = technology[0];
         if (window.innerWidth < 1120) {
@@ -156,7 +130,6 @@ const setTechnology = ({ technology }) => {
         }
         if (window.innerWidth >= 1120) {
             technology_image.src = portrait;
-            console.log(technology_image);
         }
     })
 
@@ -164,7 +137,6 @@ const setTechnology = ({ technology }) => {
     const technology_name = document.querySelector('article > h2')
     const technology_desc = document.querySelector('article > p')
 
-    // console.log(name, vehicle_desc, image)
     btns.forEach((btn, index) => {
         btn.addEventListener('click', () => {
             btns.forEach((newBtn) => {
@@ -174,7 +146,6 @@ const setTechnology = ({ technology }) => {
             const { name, images: { portrait, landscape }, description } = technology[index];
             technology_name.textContent = name;
             technology_desc.textContent = description;
-            // console.log(landscape);
             if (window.innerWidth < 1120) {
                 technology_image.src = landscape;
 
@@ -182,7 +153,6 @@ const setTechnology = ({ technology }) => {
             }
             if (window.innerWidth >= 1120) {
                 technology_image.src = portrait;
-                console.log(technology_image);
             }
 
             // technology_image.setAttribute("src", portrait);
@@ -195,7 +165,6 @@ const setTechnology = ({ technology }) => {
                 }
                 if (window.innerWidth >= 1120) {
                     technology_image.src = portrait;
-                    console.log(technology_image);
                 }
             })
 
