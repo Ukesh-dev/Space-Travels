@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--  Google Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&Barlow+Condensed:wght@400;700&family=Barlow:wght@400;700&family=Source+Serif+Pro&display=swap"
+    rel="stylesheet"
+  />
+
+
+    <link rel="stylesheet" href="./dist/style.css" />
+    <link
+      rel="icon"
+      href="./images/destination/image-mars.webp
+      "
+      type="image/icon"
+    />
+    <script defer src="./App/js/script.js"></script>
+
+    <title>Space Travels</title>
+  </head>
+  <body id="technology">
+    <a href="#main" class="skip-to-content">Skip to main content</a>
+    <header class="primary-header flex">
+      <div>
+        <img src="./images/shared/logo.svg" alt="logo" srcset="" class="logo" />
+      </div>
+      <button class="menu" aria-controls="primary-navigation">
+        <span class="sr--only" aria-expanded="false">Menu</span>
+      </button>
+      <nav>
+        <ul
+          class="underline-indicators flex primary-navigation"
+          data-visible="false"
+          role="list"
+        >
+          <li >
+            <a href="./index.html" class="uppercase text-white letter-spacing-2"
+              ><span aria-hidden="true">00</span> Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="./destination.html"
+              class="uppercase text-white letter-spacing-3"
+              ><span aria-hidden="true">01</span> Destination</a
+            >
+          </li>
+          <li>
+            <a href="./crew.html" class="uppercase text-white letter-spacing-3"
+              ><span aria-hidden="true">02</span> Crew</a
+            >
+          </li>
+          <li class="active">
+            <a
+              href="./technology.html"
+              class="uppercase text-white letter-spacing-3"
+              ><span aria-hidden="true">03</span> Technology</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main id="technology" class="grid technology">
+      <h1 class="technology-header primary-header container fs-600">
+        <span class="text-accent">01</span> Meet your technology
+      </h1>
+      <picture class="technology-image">
+        <!-- <img
+          src="/images/technology/image-launch-vehicle-landscape.jpg"
+          alt="vehicle-image"  
+        /> -->
+      </picture>
+      <div class="technology-tablist" aria-label="technology-tablist" role="tablist">
+        <button aria-selected="true" aria-controls="space capsule" role="tab">
+          <span class="sr--only">space capsule</span>01
+        </button>
+        <button
+          aria-selected="false"
+          aria-controls="primary-vehicle"
+          role="tab"
+        >
+          <span class="sr--only">primary-vehicle</span>02
+        </button>
+        <button
+          aria-selected="false"
+          aria-controls="primary-vehicle"
+          role="tab"
+        >
+          <span class="sr--only">primary-vehicle</span>03
+        </button>
+      </div>
+      <article class="technology-vehicle">
+        <h5 class="uppercase fs-200 text-accent">The terminology</h6>
+        <h2 class="uppercase ff-serif fs-700">Launch Vehicle</h2>
+        <p class="fs-300 text-accent">
+          A space capsule is an often-crewed spacecraft that uses a blunt-body
+          reentry capsule to reenter the Earth's atmosphere without wings. Our
+          capsule is where you'll spend your time during the flight. It includes
+          a space gym, cinema, and plenty of other activities to keep you
+          entertained.
+        </p>
+      </article>
+    </main>
+  </body>
+</html>

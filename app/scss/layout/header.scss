@@ -1,0 +1,142 @@
+@use "../util" as *;
+header {
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+  align-items: center;
+  justify-content: space-between;
+
+
+  .logo {
+    margin: 1.5rem clamp(1.5rem, 5vw, 3.5rem);
+  }
+  @include breakpoint(large) {
+  max-width: 90rem;
+  left: 50%;
+transform: translateX(-50%);
+    margin-block: 2rem;
+    &::before {
+      content: "";
+      position: relative;
+      // top: 20px;
+      z-index: 999;
+      // left: 30px;
+      flex-basis: 40%;
+      height: 1px;
+      margin-right: -3rem;
+      background: hsl(var(--clr-white) / 0.25);
+      order: 1;
+    }
+    nav {
+      order: 2;
+    }
+  }
+
+  .menu {
+    display: none;
+    @include breakpoint-down(small) {
+      display: block;
+      position: fixed;
+      top: 2rem;
+      cursor: pointer;
+      right: 1rem;
+      z-index: 2000;
+      background: transparent;
+      background-image: url(../../../images/shared/icon-hamburger.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      border: 0;
+      width: 2em;
+      aspect-ratio: 1;
+      :focus-visible {
+        outline: 5px solid white;
+        outline-offset: 5px;
+      }
+    }
+  }
+  .menu[aria-expanded="true"] {
+    background-image: url("../../../images/shared/icon-close.svg");
+  }
+
+  .primary-navigation {
+    --gap: clamp(1.5rem, 5vw, 5.5rem)
+    --underline-gap: 3rem;
+    list-style: none;
+    padding-inline: 2rem;
+    // align-content: center ;
+    align-items: center;
+    background-color: hsl(var(--clr-dark) / 0.85);
+
+    @supports (backdrop-filter: blur(1rem)) {
+      background-color: hsl(var(--clr-white) / 0.05);
+      backdrop-filter: blur(2rem);
+    }
+    li{
+
+        padding-block: 2rem;
+    }
+
+    @include breakpoint-down(small) {
+      position: fixed;
+      transform: translateX(100%);
+      flex-direction: column;
+      inset: 0 0 0 30%;
+      // --gap: 0.5rem;
+      align-items: flex-start;
+      --underline-gap: 1.2rem;
+      margin: 0;
+      padding: min(20rem, 20vh) 2rem;
+
+      li {
+        opacity: 0;
+        // margin: 0 auto;
+        // width: 50%;
+      }
+    }
+    @include breakpoint(medium) {
+      padding-inline: clamp(3rem, 7vw, 4rem);
+
+      a > span {
+        display: none;
+      }
+      > * + * {
+        margin-left: 2rem;
+      }
+    }
+    @include breakpoint(large) {
+      li {
+        white-space: nowrap;
+      }
+
+      a > span {
+        display: inline;
+      }
+      display: flex;
+      justify-content: center;
+      flex-basis: 70%;
+    }
+  }
+  .primary-navigation[data-visible="true"] {
+    transform: translateX(0);
+    transition: transform 0.3s ease-in;
+  }
+
+  .primary-navigation a {
+    text-decoration: none;
+  }
+
+  .primary-navigation a > span {
+    font-weight: 700;
+    margin-right: 0.1em;
+  }
+}
+@keyframes navLinkFade {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}

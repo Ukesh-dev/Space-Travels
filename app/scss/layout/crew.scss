@@ -1,0 +1,149 @@
+@use "../util" as *;
+.crew-main {
+  background-image: url("../../../images/crew/background-crew-mobile.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  @include breakpoint(medium) {
+    background-image: url("../../../images/crew/background-crew-tablet.jpg");
+    background-position: center center;
+  }
+  @include breakpoint(large) {
+    background-image: url("../../../images/crew/background-crew-desktop.jpg");
+    background-position: center center;
+  }
+}
+.crew {
+  place-items: center;
+  text-align: center;
+  gap: 0;
+  grid-template-areas:
+    "title"
+    "image"
+    "indicator"
+    "article";
+
+  min-height: calc(100vh - 100px);
+  padding-inline: 1rem;
+
+  @include breakpoint(medium) {
+    grid-template-areas:
+      "title"
+      "article"
+      "indicator"
+      "image";
+    padding: 3rem;
+    padding-block: 0;
+  }
+  @include breakpoint(large) {
+    grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 80rem)) minmax(
+        1rem,
+        1fr
+      );
+
+    grid-template-areas:
+      ". title image ."
+      ". article image ."
+      ". indicator image .";
+
+    text-align: left;
+  }
+  h1 {
+    font-family: var(--ff-sans-normal);
+    font-size: var(--fs-500);
+    font-weight: 600;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 4.72px;
+    grid-area: title;
+    > span {
+      color: hsl(var(--clr-white) / 0.2);
+    }
+    @include breakpoint(medium) {
+      width: 100%;
+      text-align: left;
+    }
+  }
+  @include breakpoint(large) {
+    .crew-name {
+      font-size: clamp(1.5rem, 2.5rem, 3rem);
+    }
+  }
+  .dot-indicators,
+  .crew-buttons {
+    width: 100%;
+    border-top: 1px solid hsl(var(--clr-white) / 0.2);
+    margin-top: 0;
+    padding-block: 1rem;
+    // border: o
+    @include breakpoint(medium) {
+      border: 0;
+    }
+    grid-area: indicator;
+    > * + * {
+      margin-left: 1rem;
+    }
+    > * {
+      width: 1px;
+      aspect-ratio: 1;
+      border: 0;
+
+      border-radius: 50%;
+      background: hsl(var(--clr-white) / 0.2);
+    }
+    > *:hover,
+    > *:focus {
+      background-color: hsl(var(--clr-white) / 0.5);
+    }
+    > [aria-selected="true"] {
+      background: hsl(var(--clr-white));
+    }
+  }
+  .image {
+    grid-area: image;
+    max-width: 50%;
+    align-self: end;
+    // border-bottom: 1px solid hsl(var(--clr-white) / 0.2);
+
+    @include breakpoint(medium) {
+      max-width: 40%;
+    }
+    @include breakpoint(large) {
+      max-width: 60%;
+      align-self: end;
+    }
+  }
+  article {
+    grid-area: article;
+    max-width: 50ch;
+    // padding-top: 3rem;
+    @include breakpoint(medium) {
+      max-width: 50ch;
+      padding-top: 2rem;
+    }
+    @include breakpoint(large) {
+      justify-self: left;
+      // min-height: 300px;
+      max-width: 50ch;
+    }
+
+    h2 {
+      @include breakpoint(medium) {
+      }
+    }
+    > p {
+      @include breakpoint(medium) {
+      }
+      @include breakpoint(large) {
+      }
+    }
+  }
+}
+
+.crew-desc {
+  min-height: 7rem;
+  @include breakpoint(large) {
+    margin-top: 1.5rem;
+  }
+}
