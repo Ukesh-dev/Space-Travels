@@ -21,11 +21,16 @@ function scssTask() {
 
 // JavaScript Task
 function jsTask() {
-  return src('app/js/script.js, app/js/navbar.js', { sourcemaps: true })
+  return src('app/js/*.js')
+    .pipe(order([
+      'app/js/script.js',
+      'app/js/navbar.js',
+    ], { base: './' }))
     .pipe(babel({ presets: ['@babel/preset-env'] }))
     .pipe(terser())
     .pipe(dest('dist', { sourcemaps: '.' }));
 }
+
 
 // Browsersync
 function browserSyncServe(cb) {
