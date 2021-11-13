@@ -17,6 +17,8 @@ function scssTask() {
     .pipe(sass())
     .pipe(postcss([autoprefixer(), cssnano()]))
     .pipe(dest('dist', { sourcemaps: '.' }));
+
+
 }
 
 // JavaScript Task
