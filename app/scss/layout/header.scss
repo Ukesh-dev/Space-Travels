@@ -105,10 +105,13 @@ transform: translateX(-50%);
       }
     }
       > * + * {
-        margin-left: 2rem;
+       padding-left: 1rem;
       }
     }
     @include breakpoint(large) {
+      > * + * {
+        margin-left: 2rem;
+      }
       li {
         white-space: nowrap;
       }
