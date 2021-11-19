@@ -24,7 +24,7 @@
     "indicator"
     "article";
 
-  min-height: calc(100vh - 100px);
+  // min-height: calc(100vh - 100px);
   padding-inline: 1rem;
 
   @include breakpoint(medium) {
@@ -73,7 +73,7 @@
   .dot-indicators,
   .crew-buttons {
     width: 100%;
-    border-top: 1px solid hsl(var(--clr-white) / 0.2);
+    // border-top: 1px solid hsl(var(--clr-white) / 0.2);
     margin-top: 0;
     padding-block: 1rem;
     // border: o
@@ -100,11 +100,16 @@
       background: hsl(var(--clr-white));
     }
   }
+  .image-container {
+    display: flex;
+    margin-inline: 1rem;
+    justify-content: center;
+    border-bottom: 1px solid hsl(var(--clr-white) / 0.2);
+  }
   .image {
     grid-area: image;
     max-width: 50%;
     align-self: end;
-    // border-bottom: 1px solid hsl(var(--clr-white) / 0.2);
 
     @include breakpoint(medium) {
       max-width: 40%;
@@ -129,11 +134,13 @@
     }
 
     h2 {
-      @include breakpoint(medium) {
+      @include breakpoint-down(small) {
+        margin-bottom: 0.3rem;
       }
     }
-    > p {
-      @include breakpoint(medium) {
+    > :nth-child(2) {
+      @include breakpoint-down(medium) {
+        margin-bottom: 0.4rem;
       }
       @include breakpoint(large) {
       }

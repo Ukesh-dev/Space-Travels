@@ -1,3 +1,4 @@
+@use "../util" as *;
 /* Box sizing rules */
 *,
 *::before,
@@ -78,8 +79,27 @@ select {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+    animation-iteration-count: 1;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+aside {
+  position: absolute;
+  left: 0;
+  top: 20%;
+
+  .vertical-upright {
+    font-size: 0.5rem;
+    @include breakpoint(medium) {
+      font-size: 0.7rem;
+    }
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    a {
+      color: hsl(var(--clr-white));
+      text-decoration: none;
+    }
   }
 }
