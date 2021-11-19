@@ -24,7 +24,7 @@
     "indicator"
     "article";
 
-  // min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 100px);
   padding-inline: 1rem;
 
   @include breakpoint(medium) {
@@ -73,7 +73,7 @@
   .dot-indicators,
   .crew-buttons {
     width: 100%;
-    // border-top: 1px solid hsl(var(--clr-white) / 0.2);
+    border-top: 1px solid hsl(var(--clr-white) / 0.2);
     margin-top: 0;
     padding-block: 1rem;
     // border: o
@@ -101,22 +101,21 @@
     }
   }
   .image-container {
-    display: flex;
-    margin-inline: 1rem;
-    justify-content: center;
-    border-bottom: 1px solid hsl(var(--clr-white) / 0.2);
-  }
-  .image {
     grid-area: image;
-    max-width: 50%;
+    display: flex;
     align-self: end;
+    justify-content: center;
+    .image {
+      // border-bottom: 1px solid hsl(var(--clr-white) / 0.2);
+      max-width: 50%;
 
-    @include breakpoint(medium) {
-      max-width: 40%;
-    }
-    @include breakpoint(large) {
-      max-width: 60%;
-      align-self: end;
+      @include breakpoint(medium) {
+        max-width: 40%;
+      }
+      @include breakpoint(large) {
+        max-width: 70%;
+        align-self: end;
+      }
     }
   }
   article {
@@ -134,13 +133,14 @@
     }
 
     h2 {
-      @include breakpoint-down(small) {
-        margin-bottom: 0.3rem;
+      @include breakpoint(medium) {
       }
     }
     > :nth-child(2) {
-      @include breakpoint-down(medium) {
-        margin-bottom: 0.4rem;
+      white-space: nowrap;
+    }
+    > p {
+      @include breakpoint(medium) {
       }
       @include breakpoint(large) {
       }
@@ -149,7 +149,9 @@
 }
 
 .crew-desc {
-  min-height: 7rem;
+  @include breakpoint-down(small) {
+    min-height: 7rem;
+  }
   @include breakpoint(large) {
     margin-top: 1.5rem;
   }
